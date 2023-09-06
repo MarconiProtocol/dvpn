@@ -1,0 +1,7 @@
+LOG.dir: /var/log/marconi
+LOG.Level: debug
+BootNode.Address: "172.30.20.10"
+BootNode.Server_Address_TTL_Minutes: 1
+BootNode.Rpc_Port: "5000"
+BootNode.Run_Socks_5: false
+Announcement.Region_Announcement_Interval_Seconds: 5

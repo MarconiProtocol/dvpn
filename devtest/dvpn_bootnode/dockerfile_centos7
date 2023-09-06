@@ -1,0 +1,34 @@
+FROM centos:7
+
+ENV HOME /root
+WORKDIR /opt/marconi
+
+RUN yum update -y
+RUN yum install -y \
+    epel-release \
+    vim \
+    time \
+    tcpdump \
+    net-tools \
+    bridge-utils \
+    iperf3 \
+    iproute \
+    git \
+    scrypt \
+    gcc \
+    gcc-c++ \
+    make \
+    htop \
+    iftop \
+    nmap-ncat.x86_64 \
+    nmap
+
+COPY ./bin/dvpn /opt/marconi/bin/dvpn
+COPY ./start_dvpn_bootnode.sh /opt/marconi/start_dvpn_bootnode.sh
+COPY ./data/config.yml /opt/marconi/etc/dvpn/config.yml
+
+RUN chmod +x /opt/marconi/start_dvpn_bootnode.sh
+
+RUN mkdir -p /opt/marconi/var/log/marconi
+
+CMD ["bash"]

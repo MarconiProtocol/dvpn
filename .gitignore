@@ -1,0 +1,9 @@
+main
+.idea
+out/dvpn
+test/*
+devtest/dvpn_bootnode/data/*
+devtest/dvpn_bootnode/bin/*
+devtest/dvpn_peer/data/*
+devtest/dvpn_peer/bin/*
+*.log

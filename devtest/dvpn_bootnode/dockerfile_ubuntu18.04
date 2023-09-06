@@ -1,0 +1,38 @@
+FROM ubuntu:18.04
+
+ENV HOME /root
+WORKDIR /opt/marconi
+
+RUN dpkg --configure -a
+RUN apt-get clean
+RUN apt-get purge
+RUN apt-get update
+RUN apt-get install -y vim
+RUN apt-get install -y \
+    time \
+    tcpdump \
+    net-tools \
+    bridge-utils \
+    iperf3 \
+    iproute2 \
+    git \
+    scrypt \
+    iputils-ping \
+    build-essential \
+    htop \
+    iftop \
+    netcat \
+    iproute2 \
+    nmap
+
+RUN apt-get install -y curl
+
+COPY ./bin/dvpn /opt/marconi/bin/dvpn
+COPY ./data/start_dvpn_bootnode.sh /opt/marconi/start_dvpn_bootnode.sh
+COPY ./data/config.yml /opt/marconi/etc/dvpn/config.yml
+
+RUN chmod +x /opt/marconi/start_dvpn_bootnode.sh
+
+RUN mkdir -p /opt/marconi/var/log/marconi
+
+CMD ["bash"]
